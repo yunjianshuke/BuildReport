@@ -1,0 +1,100 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(notification) {
+  display: flex;
+  width: var(--el-notification-width);
+  padding: var(--el-notification-padding);
+  border-radius: var(--el-notification-radius);
+  box-sizing: border-box;
+  border: 1px solid var(--el-notification-border-color);
+  position: fixed;
+  background-color: var(--el-color-white);
+  box-shadow: var(--el-notification-shadow);
+  transition: opacity 0.3s, transform 0.3s, left 0.3s, right 0.3s, top 0.4s,
+    bottom 0.3s;
+  overflow: hidden;
+
+  &.right {
+    right: 16px;
+  }
+
+  &.left {
+    left: 16px;
+  }
+
+  @include e(group) {
+    margin-left: var(--el-notification-group-margin-left);
+    margin-right: var(--el-notification-group-margin-right);
+  }
+
+  @include e(title) {
+    font-weight: bold;
+    font-size: var(--el-notification-title-font-size);
+    color: var(--el-notification-title-color);
+    margin: 0;
+  }
+
+  @include e(content) {
+    font-size: var(--el-notification-content-font-size);
+    line-height: 21px;
+    margin: 6px 0 0 0;
+    color: var(--el-notification-content-color);
+    text-align: justify;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  @include e(icon) {
+    height: var(--el-notification-icon-size);
+    width: var(--el-notification-icon-size);
+    font-size: var(--el-notification-icon-size);
+  }
+
+  @include e(closeBtn) {
+    position: absolute;
+    top: 18px;
+    right: 15px;
+    cursor: pointer;
+    color: var(--el-notification-close-color);
+    font-size: var(--el-notification-close-font-size);
+
+    &:hover {
+      color: var(--el-notification-close-hover-color);
+    }
+  }
+
+  .el-icon-success {
+    color: var(--el-notification-success-icon-color);
+  }
+
+  .el-icon-error {
+    color: var(--el-notification-danger-icon-color);
+  }
+
+  .el-icon-info {
+    color: var(--el-notification-info-icon-color);
+  }
+
+  .el-icon-warning {
+    color: var(--el-notification-warning-icon-color);
+  }
+}
+
+.el-notification-fade-enter {
+  &.right {
+    right: 0;
+    transform: translateX(100%);
+  }
+
+  &.left {
+    left: 0;
+    transform: translateX(-100%);
+  }
+}
+
+.el-notification-fade-leave-active {
+  opacity: 0;
+}

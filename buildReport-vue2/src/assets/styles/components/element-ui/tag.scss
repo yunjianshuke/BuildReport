@@ -1,0 +1,375 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(tag) {
+  display: inline-block;
+  height: 32px;
+  padding: var(--el-tag-padding);
+  line-height: 30px;
+  font-size: var(--el-tag-font-size);
+  color: var(--el-tag-primary-color);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--el-tag-border-radius);
+  box-sizing: border-box;
+  white-space: nowrap;
+
+  // 默认主题
+  background-color: color-mix(
+    in srgb,
+    var(--el-tag-primary-color) 10%,
+    var(--el-color-white)
+  );
+  border-color: color-mix(
+    in srgb,
+    var(--el-tag-primary-color) 20%,
+    var(--el-color-white)
+  );
+  color: var(--el-tag-primary-color);
+
+  @include when(hit) {
+    border-color: var(--el-tag-primary-color);
+  }
+
+  .el-tag__close {
+    color: var(--el-tag-primary-color);
+    &:hover {
+      color: var(--el-color-white);
+      background-color: var(--el-tag-primary-color);
+    }
+  }
+
+  // Info主题
+  &.el-tag--info {
+    background-color: color-mix(
+      in srgb,
+      var(--el-tag-info-color) 10%,
+      var(--el-color-white)
+    );
+    border-color: color-mix(
+      in srgb,
+      var(--el-tag-info-color) 20%,
+      var(--el-color-white)
+    );
+    color: var(--el-tag-info-color);
+
+    @include when(hit) {
+      border-color: var(--el-tag-info-color);
+    }
+
+    .el-tag__close {
+      color: var(--el-tag-info-color);
+      &:hover {
+        color: var(--el-color-white);
+        background-color: var(--el-tag-info-color);
+      }
+    }
+  }
+
+  // Success主题
+  &.el-tag--success {
+    background-color: color-mix(
+      in srgb,
+      var(--el-tag-success-color) 10%,
+      var(--el-color-white)
+    );
+    border-color: color-mix(
+      in srgb,
+      var(--el-tag-success-color) 20%,
+      var(--el-color-white)
+    );
+    color: var(--el-tag-success-color);
+
+    @include when(hit) {
+      border-color: var(--el-tag-success-color);
+    }
+
+    .el-tag__close {
+      color: var(--el-tag-success-color);
+      &:hover {
+        color: var(--el-color-white);
+        background-color: var(--el-tag-success-color);
+      }
+    }
+  }
+
+  // Warning主题
+  &.el-tag--warning {
+    background-color: color-mix(
+      in srgb,
+      var(--el-tag-warning-color) 10%,
+      var(--el-color-white)
+    );
+    border-color: color-mix(
+      in srgb,
+      var(--el-tag-warning-color) 20%,
+      var(--el-color-white)
+    );
+    color: var(--el-tag-warning-color);
+
+    @include when(hit) {
+      border-color: var(--el-tag-warning-color);
+    }
+
+    .el-tag__close {
+      color: var(--el-tag-warning-color);
+      &:hover {
+        color: var(--el-color-white);
+        background-color: var(--el-tag-warning-color);
+      }
+    }
+  }
+
+  // Danger主题
+  &.el-tag--danger {
+    background-color: color-mix(
+      in srgb,
+      var(--el-tag-danger-color) 10%,
+      var(--el-color-white)
+    );
+    border-color: color-mix(
+      in srgb,
+      var(--el-tag-danger-color) 20%,
+      var(--el-color-white)
+    );
+    color: var(--el-tag-danger-color);
+
+    @include when(hit) {
+      border-color: var(--el-tag-danger-color);
+    }
+
+    .el-tag__close {
+      color: var(--el-tag-danger-color);
+      &:hover {
+        color: var(--el-color-white);
+        background-color: var(--el-tag-danger-color);
+      }
+    }
+  }
+
+  .el-icon-close {
+    border-radius: 50%;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    font-size: 12px;
+    height: 16px;
+    width: 16px;
+    line-height: 16px;
+    vertical-align: middle;
+    top: -1px;
+    right: -5px;
+
+    &::before {
+      display: block;
+    }
+  }
+
+  // Dark主题
+  @include m(dark) {
+    background-color: var(--el-tag-primary-color);
+    border-color: var(--el-tag-primary-color);
+    color: var(--el-color-white);
+
+    .el-tag__close {
+      color: var(--el-color-white);
+      &:hover {
+        background-color: color-mix(
+          in srgb,
+          var(--el-tag-primary-color) 80%,
+          var(--el-color-white)
+        );
+      }
+    }
+
+    &.el-tag--info {
+      background-color: var(--el-tag-info-color);
+      border-color: var(--el-tag-info-color);
+      color: var(--el-color-white);
+
+      .el-tag__close {
+        color: var(--el-color-white);
+        &:hover {
+          background-color: color-mix(
+            in srgb,
+            var(--el-tag-info-color) 80%,
+            var(--el-color-white)
+          );
+        }
+      }
+    }
+
+    &.el-tag--success {
+      background-color: var(--el-tag-success-color);
+      border-color: var(--el-tag-success-color);
+      color: var(--el-color-white);
+
+      .el-tag__close {
+        color: var(--el-color-white);
+        &:hover {
+          background-color: color-mix(
+            in srgb,
+            var(--el-tag-success-color) 80%,
+            var(--el-color-white)
+          );
+        }
+      }
+    }
+
+    &.el-tag--warning {
+      background-color: var(--el-tag-warning-color);
+      border-color: var(--el-tag-warning-color);
+      color: var(--el-color-white);
+
+      .el-tag__close {
+        color: var(--el-color-white);
+        &:hover {
+          background-color: color-mix(
+            in srgb,
+            var(--el-tag-warning-color) 80%,
+            var(--el-color-white)
+          );
+        }
+      }
+    }
+
+    &.el-tag--danger {
+      background-color: var(--el-tag-danger-color);
+      border-color: var(--el-tag-danger-color);
+      color: var(--el-color-white);
+
+      .el-tag__close {
+        color: var(--el-color-white);
+        &:hover {
+          background-color: color-mix(
+            in srgb,
+            var(--el-tag-danger-color) 80%,
+            var(--el-color-white)
+          );
+        }
+      }
+    }
+  }
+
+  // Plain主题
+  @include m(plain) {
+    background-color: var(--el-color-white);
+    border-color: color-mix(
+      in srgb,
+      var(--el-tag-primary-color) 40%,
+      var(--el-color-white)
+    );
+    color: var(--el-tag-primary-color);
+
+    .el-tag__close {
+      color: var(--el-tag-primary-color);
+      &:hover {
+        background-color: var(--el-tag-primary-color);
+        color: var(--el-color-white);
+      }
+    }
+
+    &.el-tag--info {
+      background-color: var(--el-color-white);
+      border-color: color-mix(
+        in srgb,
+        var(--el-tag-info-color) 40%,
+        var(--el-color-white)
+      );
+      color: var(--el-tag-info-color);
+
+      .el-tag__close {
+        color: var(--el-tag-info-color);
+        &:hover {
+          background-color: var(--el-tag-info-color);
+          color: var(--el-color-white);
+        }
+      }
+    }
+
+    &.el-tag--success {
+      background-color: var(--el-color-white);
+      border-color: color-mix(
+        in srgb,
+        var(--el-tag-success-color) 40%,
+        var(--el-color-white)
+      );
+      color: var(--el-tag-success-color);
+
+      .el-tag__close {
+        color: var(--el-tag-success-color);
+        &:hover {
+          background-color: var(--el-tag-success-color);
+          color: var(--el-color-white);
+        }
+      }
+    }
+
+    &.el-tag--warning {
+      background-color: var(--el-color-white);
+      border-color: color-mix(
+        in srgb,
+        var(--el-tag-warning-color) 40%,
+        var(--el-color-white)
+      );
+      color: var(--el-tag-warning-color);
+
+      .el-tag__close {
+        color: var(--el-tag-warning-color);
+        &:hover {
+          background-color: var(--el-tag-warning-color);
+          color: var(--el-color-white);
+        }
+      }
+    }
+
+    &.el-tag--danger {
+      background-color: var(--el-color-white);
+      border-color: color-mix(
+        in srgb,
+        var(--el-tag-danger-color) 40%,
+        var(--el-color-white)
+      );
+      color: var(--el-tag-danger-color);
+
+      .el-tag__close {
+        color: var(--el-tag-danger-color);
+        &:hover {
+          background-color: var(--el-tag-danger-color);
+          color: var(--el-color-white);
+        }
+      }
+    }
+  }
+
+  // 尺寸
+  @include m(medium) {
+    height: 28px;
+    line-height: 26px;
+
+    .el-icon-close {
+      transform: scale(0.8);
+    }
+  }
+
+  @include m(small) {
+    height: 24px;
+    padding: 0 8px;
+    line-height: 22px;
+
+    .el-icon-close {
+      transform: scale(0.8);
+    }
+  }
+
+  @include m(mini) {
+    height: 20px;
+    padding: 0 5px;
+    line-height: 19px;
+
+    .el-icon-close {
+      margin-left: -3px;
+      transform: scale(0.7);
+    }
+  }
+}

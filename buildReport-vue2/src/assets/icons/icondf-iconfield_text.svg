@@ -1,0 +1,12 @@
+<svg
+  class="icon"
+  viewBox="0 0 1024 1024"
+  xmlns="http://www.w3.org/2000/svg"
+  width="200"
+  height="200"
+>
+  <defs>
+    <style type="text/css"></style>
+  </defs>
+  <path d="M853.333333 128H170.666667v170.666667h256v597.333333h170.666666V298.666667h256z" fill="#448bf7"></path>
+</svg>

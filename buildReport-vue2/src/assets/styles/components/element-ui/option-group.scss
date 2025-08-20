@@ -1,0 +1,40 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(select-group) {
+  margin: 0;
+  padding: 0;
+
+  @include e(wrap) {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &:not(:last-of-type) {
+      padding-bottom: 24px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        left: 20px;
+        right: 20px;
+        bottom: 12px;
+        height: 1px;
+        background: var(--el-border-color-light);
+      }
+    }
+  }
+
+  @include e(title) {
+    padding-left: 20px;
+    font-size: var(--el-select-group-font-size);
+    color: var(--el-select-group-color);
+    line-height: var(--el-select-group-height);
+  }
+
+  & .el-select-dropdown__item {
+    padding-left: 20px;
+  }
+}

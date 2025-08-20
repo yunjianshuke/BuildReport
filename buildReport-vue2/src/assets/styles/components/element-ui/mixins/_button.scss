@@ -1,0 +1,126 @@
+@import "../common/var";
+@mixin button-plain($color) {
+  color: $color;
+  background: color-mix(in srgb, var(--el-color-white) 90%, $color);
+  border-color: color-mix(in srgb, var(--el-color-white) 60%, $color);
+
+  &:hover,
+  &:focus {
+    background: $color;
+    border-color: $color;
+    color: var(--el-color-white);
+  }
+
+  &:active {
+    background: color-mix(
+      in srgb,
+      var(--el-color-black) var(--el-button-active-shade-percent),
+      $color
+    );
+    border-color: color-mix(
+      in srgb,
+      var(--el-color-black) var(--el-button-active-shade-percent),
+      $color
+    );
+    color: var(--el-color-white);
+    outline: none;
+  }
+
+  &.is-disabled {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: color-mix(in srgb, var(--el-color-white) 40%, $color);
+      background-color: color-mix(in srgb, var(--el-color-white) 90%, $color);
+      border-color: color-mix(in srgb, var(--el-color-white) 80%, $color);
+    }
+  }
+}
+
+@mixin button-variant($color, $background-color, $border-color) {
+  color: $color;
+  background-color: $background-color;
+  border-color: $border-color;
+
+  &:hover,
+  &:focus {
+    background: color-mix(
+      in srgb,
+      var(--el-color-white) var(--el-button-hover-tint-percent),
+      $background-color
+    );
+    border-color: color-mix(
+      in srgb,
+      var(--el-color-white) var(--el-button-hover-tint-percent),
+      $border-color
+    );
+    color: $color;
+  }
+
+  &:active {
+    background: color-mix(
+      in srgb,
+      var(--el-color-black) var(--el-button-active-shade-percent),
+      $background-color
+    );
+    border-color: color-mix(
+      in srgb,
+      var(--el-color-black) var(--el-button-active-shade-percent),
+      $border-color
+    );
+    color: $color;
+    outline: none;
+  }
+
+  &.is-active {
+    background: color-mix(
+      in srgb,
+      var(--el-color-black) var(--el-button-active-shade-percent),
+      $background-color
+    );
+    border-color: color-mix(
+      in srgb,
+      var(--el-color-black) var(--el-button-active-shade-percent),
+      $border-color
+    );
+    color: $color;
+  }
+
+  &.is-disabled {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--el-color-white);
+      background-color: color-mix(
+        in srgb,
+        $background-color 50%,
+        var(--el-color-white)
+      );
+      border-color: color-mix(
+        in srgb,
+        $border-color 50%,
+        var(--el-color-white)
+      );
+    }
+  }
+
+  &.is-plain {
+    @include button-plain($background-color);
+  }
+}
+
+@mixin button-size(
+  $padding-vertical,
+  $padding-horizontal,
+  $font-size,
+  $border-radius
+) {
+  padding: $padding-vertical $padding-horizontal;
+  font-size: $font-size;
+  border-radius: $border-radius;
+  &.is-round {
+    padding: $padding-vertical $padding-horizontal;
+  }
+}

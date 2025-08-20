@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>list</title>
+    <g id="list" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M0,1 L2,1 L2,2 L0,2 Z M0,4 L2,4 L2,5 L0,5 Z M0,7 L2,7 L2,8 L0,8 Z M0,10 L2,10 L2,11 L0,11 Z M3,1 L12,1 L12,2 L3,2 Z M3,4 L12,4 L12,5 L3,5 Z M3,7 L12,7 L12,8 L3,8 Z M3,10 L12,10 L12,11 L3,11 Z" id="形状结合" fill="#2B7049"></path>
+    </g>
+</svg>

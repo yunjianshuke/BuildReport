@@ -1,0 +1,59 @@
+/*
+ * Copyright 2025-2030 大连云建数科科技有限公司.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.yunjian.datarelation.dto;
+
+import cn.hutool.db.Page;
+
+import java.util.List;
+
+import lombok.Data;
+
+/**
+ * Created on 2024/7/3 上午11:44
+ *
+ * @author fusheng
+ * @version 1.0
+ */
+@Data
+public class ReportInfoDTO extends Page {
+
+    private boolean export;
+
+    private Long reportId;
+    private Long groupId;
+    /**
+     * 报表名称
+     */
+    private String name;
+
+    private List<Long> dataSetId;
+    private List<DataSetDTO> dataset;
+    /**
+     * 报表详细信息json
+     */
+    private String componentJson;
+    /**
+     * 条件过滤
+     */
+    private String filterComponents;
+    /**
+     * 下钻条件
+     */
+    List<ConditionDTO> condition;
+
+    private String reportIds;
+
+}

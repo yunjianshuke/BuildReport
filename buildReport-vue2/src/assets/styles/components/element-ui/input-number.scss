@@ -1,0 +1,183 @@
+@import "mixins/mixins";
+@import "common/var";
+@import "input";
+
+@include b(input-number) {
+  position: relative;
+  display: inline-block;
+  width: 180px;
+  line-height: calc(var(--el-input-height) - 2px);
+
+  .el-input {
+    display: block;
+
+    &__inner {
+      -webkit-appearance: none;
+      padding-left: calc(var(--el-input-height) + 10px);
+      padding-right: calc(var(--el-input-height) + 10px);
+      text-align: center;
+    }
+  }
+
+  @include e((increase, decrease)) {
+    position: absolute;
+    z-index: 1;
+    top: 1px;
+    width: var(--el-input-height);
+    height: auto;
+    text-align: center;
+    background: var(--el-background-color-base);
+    color: var(--el-color-text-regular);
+    cursor: pointer;
+    font-size: 13px;
+
+    &:hover {
+      color: var(--el-color-primary);
+
+      &:not(.is-disabled) ~ .el-input .el-input__inner:not(.is-disabled) {
+        border-color: var(--el-input-focus-border);
+      }
+    }
+
+    &.is-disabled {
+      color: var(--el-disabled-color-base);
+      cursor: not-allowed;
+    }
+  }
+
+  @include e(increase) {
+    right: 1px;
+    border-radius: 0 var(--el-border-radius-base) var(--el-border-radius-base) 0;
+    border-left: var(--el-border-base);
+  }
+
+  @include e(decrease) {
+    left: 1px;
+    border-radius: var(--el-border-radius-base) 0 0 var(--el-border-radius-base);
+    border-right: var(--el-border-base);
+  }
+
+  @include when(disabled) {
+    @include e((increase, decrease)) {
+      border-color: var(--el-disabled-border-color);
+      color: var(--el-disabled-border-color);
+
+      &:hover {
+        color: var(--el-disabled-border-color);
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  @include m(medium) {
+    width: 200px;
+    line-height: calc(var(--el-input-medium-height) - 2px);
+
+    @include e((increase, decrease)) {
+      width: var(--el-input-medium-height);
+      font-size: var(--el-input-medium-font-size);
+    }
+
+    .el-input__inner {
+      padding-left: calc(var(--el-input-medium-height) + 7px);
+      padding-right: calc(var(--el-input-medium-height) + 7px);
+    }
+  }
+
+  @include m(small) {
+    width: 130px;
+    line-height: calc(var(--el-input-small-height) - 2px);
+
+    @include e((increase, decrease)) {
+      width: var(--el-input-small-height);
+      font-size: var(--el-input-small-font-size);
+
+      [class*="el-icon"] {
+        transform: scale(0.9);
+      }
+    }
+
+    .el-input__inner {
+      padding-left: calc(var(--el-input-small-height) + 7px);
+      padding-right: calc(var(--el-input-small-height) + 7px);
+    }
+  }
+
+  @include m(mini) {
+    width: 130px;
+    line-height: calc(var(--el-input-mini-height) - 2px);
+
+    @include e((increase, decrease)) {
+      width: var(--el-input-mini-height);
+      font-size: var(--el-input-mini-font-size);
+
+      [class*="el-icon"] {
+        transform: scale(0.8);
+      }
+    }
+
+    .el-input__inner {
+      padding-left: calc(var(--el-input-mini-height) + 7px);
+      padding-right: calc(var(--el-input-mini-height) + 7px);
+    }
+  }
+
+  @include when(without-controls) {
+    .el-input__inner {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+
+  @include when(controls-right) {
+    .el-input__inner {
+      padding-left: 15px;
+      padding-right: calc(var(--el-input-height) + 10px);
+    }
+
+    @include e((increase, decrease)) {
+      height: auto;
+      line-height: calc((var(--el-input-height) - 2px) / 2);
+
+      [class*="el-icon"] {
+        transform: scale(0.8);
+      }
+    }
+
+    @include e(increase) {
+      border-radius: 0 var(--el-border-radius-base) 0 0;
+      border-bottom: var(--el-border-base);
+    }
+
+    @include e(decrease) {
+      right: 1px;
+      bottom: 1px;
+      top: auto;
+      left: auto;
+      border-right: none;
+      border-left: var(--el-border-base);
+      border-radius: 0 0 var(--el-border-radius-base) 0;
+    }
+
+    &[class*="medium"] {
+      [class*="increase"],
+      [class*="decrease"] {
+        line-height: calc((var(--el-input-medium-height) - 2px) / 2);
+      }
+    }
+
+    &[class*="small"] {
+      [class*="increase"],
+      [class*="decrease"] {
+        line-height: calc((var(--el-input-small-height) - 2px) / 2);
+      }
+    }
+
+    &[class*="mini"] {
+      [class*="increase"],
+      [class*="decrease"] {
+        line-height: calc((var(--el-input-mini-height) - 2px) / 2);
+      }
+    }
+  }
+}

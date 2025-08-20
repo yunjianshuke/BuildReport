@@ -1,0 +1,69 @@
+server:
+  port: 8016
+# 数据源
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: ${MYSQL_USER:root}
+      password: ${MYSQL_PWD:Yun0501.}
+      url: jdbc:mysql://${MYSQL_HOST:build-mysql}:${MYSQL_PORT:3306}/${MYSQL_DB:buildreport}?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true&allowPublicKeyRetrieval=true
+      stat-view-servlet:
+        enabled: true
+        allow: ""
+        url-pattern: /druid/*
+        #login-username: admin
+        #login-password: admin
+      filter:
+        stat:
+          enabled: true
+          log-slow-sql: true
+          slow-sql-millis: 10000
+          merge-sql: false
+        wall:
+          config:
+            multi-statement-allow: true
+
+  redis:
+    host: build-redis
+    port: 6379
+    database: 0
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+# Logger Config
+logging:
+  level:
+    com.yunjian.datarelation.mapper: debug
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  type-enums-package: com.yunjian.datarelation.enums
+  type-handlers-package: com.yunjian.datarelation.common
+report:
+  # 使用了阿里的数据源,不区分数据库所有数据库均使用以下配置进行池化管理
+  dict:
+    # 字典缓存的刷新时间，不建议太短因为很少更新，建议10分钟以上
+    refreshTime: 600
+  export:
+    # 报表导出超时时间，如果超过将自动终止导出逻辑减少资源使用，并返回408超时提醒，建议配置小于nginx超时时间 - 3秒左右
+    exportTimeOut: 80
+    designLimitSize: 1000
+    actualLimitSize: 10000
+  datasource:
+    # 初始连接数
+    initialSize: 5
+    # 最少连接数
+    minIdle: 5
+    # 最大连接数
+    maxActive: 20
+    # 获取连接等待超时的时间 (秒)
+    maxWait: 3
+    # 配置间隔多久进行一次检测，检测需要关闭的空闲连接 （分钟）不要太短建议在1小时-3小时，要小于数据库的连接存活时间
+    timeBetweenEvictionRunsMillis: 60
+    # 配置一个连接在池中最小生存的时间 （分钟）
+    minEvictableIdleTimeMillis: 5
+    # 健康检查以及重连时间(毫秒)建议5秒以上,减少频繁测试连接带来的额外开销
+    healthCheckTimeMillis: 60000

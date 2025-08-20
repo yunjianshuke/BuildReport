@@ -1,0 +1,39 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(statistic) {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: var(--el-color-black);
+  font-variant: tabular-nums;
+  list-style: none;
+  font-feature-settings: "tnum";
+  text-align: center;
+
+  .head {
+    margin-bottom: 4px;
+    color: var(--el-color-text-regular);
+    font-size: var(--el-font-size-small);
+  }
+
+  .con {
+    font-family: Sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--el-color-text-primary);
+
+    .number {
+      font-size: var(--el-font-size-extra-large);
+      padding: 0 4px;
+    }
+
+    span {
+      display: inline-block;
+      margin: 0;
+      line-height: 100%;
+    }
+  }
+}

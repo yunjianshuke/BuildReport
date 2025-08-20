@@ -1,0 +1,142 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(link) {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  position: relative;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: var(--el-link-font-size);
+  font-weight: var(--el-link-font-weight);
+
+  @include when(underline) {
+    &:hover:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 0;
+      bottom: 0;
+      border-bottom: 1px solid var(--el-link-default-active-color);
+    }
+  }
+
+  @include when(disabled) {
+    cursor: not-allowed;
+  } 
+
+  & [class*="el-icon-"] {
+    & + span {
+      margin-left: 5px;
+    }
+  }
+    
+  &.el-link--default {
+    color: var(--el-link-default-font-color);
+    &:hover {
+      color: var(--el-link-default-active-color);
+    }
+    &:after {
+      border-color: var(--el-link-default-active-color);
+    }
+    @include when(disabled) {
+      color: var(--el-link-disabled-font-color);
+    }
+  }
+
+  &.el-link--primary {
+    color: var(--el-link-primary-font-color);
+    &:hover {
+      color: color-mix(in srgb, var(--el-link-primary-font-color) 80%, var(--el-color-white));
+    }
+    &:after {
+      border-color: var(--el-link-primary-font-color);
+    }
+    @include when(disabled) {
+      color: color-mix(in srgb, var(--el-link-primary-font-color) 50%, var(--el-color-white));
+    }
+    @include when(underline) {
+      &:hover:after {
+        border-color: var(--el-link-primary-font-color);
+      }
+    }
+  }
+
+  &.el-link--success {
+    color: var(--el-link-success-font-color);
+    &:hover {
+      color: color-mix(in srgb, var(--el-link-success-font-color) 80%, var(--el-color-white));
+    }
+    &:after {
+      border-color: var(--el-link-success-font-color);
+    }
+    @include when(disabled) {
+      color: color-mix(in srgb, var(--el-link-success-font-color) 50%, var(--el-color-white));
+    }
+    @include when(underline) {
+      &:hover:after {
+        border-color: var(--el-link-success-font-color);
+      }
+    }
+  }
+
+  &.el-link--warning {
+    color: var(--el-link-warning-font-color);
+    &:hover {
+      color: color-mix(in srgb, var(--el-link-warning-font-color) 80%, var(--el-color-white));
+    }
+    &:after {
+      border-color: var(--el-link-warning-font-color);
+    }
+    @include when(disabled) {
+      color: color-mix(in srgb, var(--el-link-warning-font-color) 50%, var(--el-color-white));
+    }
+    @include when(underline) {
+      &:hover:after {
+        border-color: var(--el-link-warning-font-color);
+      }
+    }
+  }
+
+  &.el-link--danger {
+    color: var(--el-link-danger-font-color);
+    &:hover {
+      color: color-mix(in srgb, var(--el-link-danger-font-color) 80%, var(--el-color-white));
+    }
+    &:after {
+      border-color: var(--el-link-danger-font-color);
+    }
+    @include when(disabled) {
+      color: color-mix(in srgb, var(--el-link-danger-font-color) 50%, var(--el-color-white));
+    }
+    @include when(underline) {
+      &:hover:after {
+        border-color: var(--el-link-danger-font-color);
+      }
+    }
+  }
+
+  &.el-link--info {
+    color: var(--el-link-info-font-color);
+    &:hover {
+      color: color-mix(in srgb, var(--el-link-info-font-color) 80%, var(--el-color-white));
+    }
+    &:after {
+      border-color: var(--el-link-info-font-color);
+    }
+    @include when(disabled) {
+      color: color-mix(in srgb, var(--el-link-info-font-color) 50%, var(--el-color-white));
+    }
+    @include when(underline) {
+      &:hover:after {
+        border-color: var(--el-link-info-font-color);
+      }
+    }
+  }
+}
